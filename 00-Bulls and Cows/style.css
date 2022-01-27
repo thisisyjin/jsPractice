@@ -18,7 +18,7 @@ body {
 }
 
 body::after {
-    content: "text-RPG";
+    content: "Bulls and Cows";
     display: block;
     margin-top: 50px;
     color: #736a59;
