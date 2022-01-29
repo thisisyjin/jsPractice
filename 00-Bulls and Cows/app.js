@@ -2,6 +2,15 @@
 // JS Array / Math객체 / String / Loop practice용
 
 
+const form = document.getElementById('input-form');
+const input = document.querySelector('#input-form input');
+const button = document.querySelector('#input-form button');
+const limitDiv = document.getElementById('log2');
+const limitNum = document.getElementById('limit');
+limitNum.innerHTML = 10;
+
+let answer = [];
+let count = 0;
 
 
 // 로그 출력
@@ -15,38 +24,32 @@ function logMessage(msg, color) {
     document.getElementById('log').appendChild(div);
 }
 
-// input과 button
-const input = document.querySelector('#input-form input');
-const button = document.querySelector('#input-form button');
-
-// 
-
 
 function getNumber() {
     let list = [0,1,2,3,4,5,6,7,8,9];
-    let answer = [];
     for (let i=0; i<4; i++) {
         let select = Math.floor(Math.random() * list.length);
         // answer[i] = list.splice(select, 1)[0];
         answer.push(list.splice(select, 1)[0]);
     }
-    localStorage.setItem('answer', answer.join(''));   // answer = 2458
+    console.log(answer);
 }
 
-let count = 1;
 
-function guessNumber() {
+function guessNumber(event) {
+    event.preventDefault;
     let strike = 0;
     let ball = 0;
 
-    while(count <= 10) {
+    while(count < 10) {        
     let num = input.value;
     let numArr = num.split('');
     strike = 0;
     ball = 0;
 
-    let answerArr = localStorage.getItem('answer').split('');
-
+    let answerArr = String(answer).split(',');
+    count++;
+ 
     for(let j=0; j<4; j++) {
         for (let k=0; k<4; k++) {
             if (answerArr[j] == numArr[k]) {
@@ -61,13 +64,15 @@ function guessNumber() {
     }
 
     if (strike === 4) {
-        logMessage('정답입니다!' + count + '회만에 맞춤', '#370089');
+        logMessage('HomeRun! ㅡ ' + count + '회만에 맞춤', '#370089');
+        limitDiv.style.display = 'none';
         break;
-    } else if (count > 10) {
-        logMessage('시도 횟수를 초과하셨습니다.\n게임을 다시 하려면 F5를 누르세요.', '#780000');
+    } else if (count >= 10) {
+        logMessage(`GameOver : 시도 횟수 초과 ㅡ 새 게임 : F5`, '#780000');
+        limitDiv.style.display = 'none';
     } else {
         logMessage(numArr.join('') + ': ' + strike + '스트라이크 ' + ball + '볼');
-        count++;
+        limitNum.innerHTML = 10 - count;
         break;
      }
   }
@@ -76,7 +81,9 @@ function guessNumber() {
 
 
 getNumber();       // 숫자 뽑기
-button.addEventListener('click', guessNumber);     // eventListener - 버튼 클릭시 
+form.addEventListener('submit', guessNumber);    // eventListener - 폼 제출시
+
+// button.addEventListener('click', guessNumber);     // eventListener - 버튼 클릭시 
 
 
 
