@@ -38,9 +38,10 @@ function getNumber() {
 
 function guessNumber(event) {
     event.preventDefault;
+    
     let strike = 0;
     let ball = 0;
-
+    
     while(count < 10) {        
     let num = input.value;
     let numArr = num.split('');
@@ -62,6 +63,7 @@ function guessNumber(event) {
             }
         }
     }
+    input.value = '';
 
     if (strike === 4) {
         logMessage('HomeRun! ㅡ ' + count + '회만에 맞춤', '#370089');
