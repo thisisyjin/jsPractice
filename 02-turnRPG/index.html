@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>턴제 게임</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="container">
+    <form id="start-screen">
+        <input id="name-input" required placeholder="영웅 이름을 입력하세요!" />
+        <button id="start">시작</button>
+    </form>
+</div>
+
+<div class="container">
+    <div id="screen">
+        <div id="hero-stat">
+          <span id="hero-name"></span>
+          <span id="hero-level"></span>
+          <span id="hero-hp"></span>
+          <span id="hero-xp"></span>
+          <span id="hero-att"></span>
+        </div>
+        <div class="menu-container">
+            <form id="game-menu" style="display: none;">
+                <div id="menu-1">1.모험</div>
+                <div id="menu-2">2.휴식</div>
+                <div id="menu-3">3.종료</div>
+                <input id="menu-input" required placeholder="숫자를 입력하세요" maxlength="1" />
+                <button id="menu-button">입력</button>
+            </form>
+        </div>
+        <div class="menu-container">
+            <form id="battle-menu" style="display: none;">
+                <div id="battle-1">1.공격</div>
+                <div id="battle-2">2.회복</div>
+                <div id="battle-3">3.도망</div>
+                <input id="battle-input" required placeholder="숫자를 입력하세요" maxlength="1" />
+                <button id="battle-button">입력</button>
+            </form>
+        </div>
+        <div id="message"></div>
+        <div id="monster-stat">
+          <span id="monster-name"></span>
+          <span id="monster-hp"></span>
+          <span id="monster-att"></span>  
+        </div>
+    </div>
+</div>
+
+<script src="./turn.js"></script>
+</body>
+</html>
