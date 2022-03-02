@@ -1,6 +1,8 @@
 # jsPractice
 
-📌 for JavaScript practice 
-📌 make what I want to make!
+📌 for <strong>JavaScript practice</strong>
 
-- Mainly, make web games 
+📌 make what I want to make!
+   
+💕 Mainly, make <em><b>web games</b></em>
+
